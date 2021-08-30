@@ -1,5 +1,5 @@
-import logo from './logo.png';
 import { NavLink } from 'react-router-dom';
+import logo from './logo.png';
 
 const NavBar = () => {
   const links = [
@@ -20,14 +20,13 @@ const NavBar = () => {
     },
   ];
 
-  const createLinks = () =>
-    links.map((link) => (
-      <li key={link.key}>
-        <NavLink to={link.path} exact>
-          {link.text}
-        </NavLink>
-      </li>
-    ));
+  const createLinks = () => links.map((link) => (
+    <li key={link.key}>
+      <NavLink to={link.path} exact>
+        {link.text}
+      </NavLink>
+    </li>
+  ));
 
   return (
     <nav className="navBar">
