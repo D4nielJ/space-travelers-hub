@@ -11,7 +11,7 @@ const Missions = () => {
     if (missionsStatus === 'idle') {
       dispatch(fetchMissions());
     }
-  }, []);
+  }, [missionsStatus, dispatch]);
 
   const createMissions = () => missions.map((mission) => (
     <tr key={mission.missionId}>
