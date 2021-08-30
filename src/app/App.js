@@ -1,12 +1,18 @@
-import NavBar from '../common/Nav';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import NavBar from '../common/navbar/Nav';
+import Profile from '../features/profile/profile';
 
-function App() {
-  return (
+const App = () => (
+  <Router basename={process.env.PUBLIC_URL}>
     <div className="App">
       <NavBar />
-      <p>Hello world</p>
+      <Switch>
+        <Route path="/profile">
+          <Profile />
+        </Route>
+      </Switch>
     </div>
-  );
-}
+  </Router>
+);
 
 export default App;
