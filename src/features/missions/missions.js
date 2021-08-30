@@ -1,27 +1,7 @@
+import { useSelector } from 'react-redux';
+
 const Missions = () => {
-  const missions = [
-    {
-      missionId: 1,
-      name: 'Thaicom',
-      description:
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias eius culpa maiores ex perspiciatis quas tempore inventore esse laborum ab.',
-      status: null,
-    },
-    {
-      missionId: 2,
-      name: 'Telstar',
-      description:
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias eius culpa maiores ex perspiciatis quas tempore inventore esse laborum ab.',
-      status: 'joined',
-    },
-    {
-      missionId: 3,
-      name: 'Iridium NEXT',
-      description:
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias eius culpa maiores ex perspiciatis quas tempore inventore esse laborum ab.',
-      status: null,
-    },
-  ];
+  const missions = useSelector((state) => state.missions.missions);
 
   const createMissions = () =>
     missions.map((mission) => (
