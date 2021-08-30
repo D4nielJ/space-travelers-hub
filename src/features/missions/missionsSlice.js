@@ -30,11 +30,11 @@ export const missionsSlice = createSlice({
       .addCase(fetchMissions.fulfilled, (state, action) => {
         state.missions = [...state.missions, ...action.payload];
         state.status = 'fulfilled';
-      });
+      })
       .addCase(fetchMissions.rejected, (state) => {
         state.status = 'rejected';
         state.error = 'Error fetching missions data';
-      })
+      });
   },
 });
 
