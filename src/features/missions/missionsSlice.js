@@ -1,36 +1,43 @@
-const initialState = {
-  missions: [
-    {
-      missionId: 1,
-      name: 'Thaicom',
-      description:
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias eius culpa maiores ex perspiciatis quas tempore inventore esse laborum ab.',
-      status: null,
-    },
-    {
-      missionId: 2,
-      name: 'Telstar',
-      description:
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias eius culpa maiores ex perspiciatis quas tempore inventore esse laborum ab.',
-      status: 'joined',
-    },
-    {
-      missionId: 3,
-      name: 'Iridium NEXT',
-      description:
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias eius culpa maiores ex perspiciatis quas tempore inventore esse laborum ab.',
-      status: null,
-    },
-  ],
-  status: 'idle',
-  error: null,
-};
+/* eslint-disable no-param-reassign */
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+const missionsURL = 'https://api.spacexdata.com/v3/missions';
 
-export default reducer;
+const fetchMissions = createAsyncThunk('missions/fetchMissions', async () => {
+  const response = await axios.get(missionsURL);
+  return response.data.map((mission) => ({
+    missionId: mission.mission_id,
+    name: mission.mission_name,
+    description: mission.description,
+    status: null,
+  }));
+});
+
+export const missionsSlice = createSlice({
+  name: 'missions',
+  initialState: {
+    missions: [],
+    status: 'idle',
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchMissions.pending, (state) => {
+        state.status = 'pending';
+      })
+      .addCase(fetchMissions.fulfilled, (state, action) => {
+        state.missions = [...state.missions, ...action.payload];
+        state.status = 'fulfilled';
+      })
+      .addCase(fetchMissions.rejected, (state) => {
+        state.status = 'rejected';
+        state.error = 'Error fetching missions data';
+      });
+  },
+});
+
+export { fetchMissions };
+
+export default missionsSlice.reducer;
