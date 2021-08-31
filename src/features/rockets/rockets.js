@@ -23,6 +23,7 @@ const Rockets = () => {
           name={el.name}
           description={el.description}
           image={el.image}
+          booking={el.booking}
         />
       ))}
     </div>
