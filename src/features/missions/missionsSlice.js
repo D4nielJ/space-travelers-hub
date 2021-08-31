@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const missionsURL = 'https://api.spacexdata.com/v3/missions';
@@ -10,9 +10,11 @@ const fetchMissions = createAsyncThunk('missions/fetchMissions', async () => {
     missionId: mission.mission_id,
     name: mission.mission_name,
     description: mission.description,
-    status: null,
+    status: false,
   }));
 });
+
+const updateMissions = createAction('missions/UPDATE_STATUS');
 
 export const missionsSlice = createSlice({
   name: 'missions',
@@ -34,10 +36,17 @@ export const missionsSlice = createSlice({
       .addCase(fetchMissions.rejected, (state) => {
         state.status = 'rejected';
         state.error = 'Error fetching missions data';
+      })
+      .addCase(updateMissions, (state, action) => {
+        state.missions.forEach((mission) => {
+          if (mission.missionId === action.payload) {
+            mission.status = !mission.status;
+          }
+        });
       });
   },
 });
 
-export { fetchMissions };
+export { fetchMissions, updateMissions };
 
 export default missionsSlice.reducer;
