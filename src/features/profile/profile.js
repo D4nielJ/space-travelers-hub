@@ -2,18 +2,19 @@ import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const missions = useSelector((state) => state.missions.missions);
-  const createMissions = () =>
-    missions.map((mission) => {
-      if (mission.status) {
-        return <li key={mission.missionId}>{mission.name}</li>;
-      }
-    });
-  
+  const missionsJoined = missions.filter((mission) => mission.status === true);
+  const missionsContent = () => {
+    if (missionsJoined.length === 0) {
+      return <li>Join missions to start</li>;
+    }
+    return missionsJoined.map((mission) => <li key={mission.missionId}>{mission.name}</li>);
+  };
+
   return (
     <section className="profile">
       <div className="missions">
         <h2>My Missions</h2>
-        <ul>{createMissions()}</ul>
+        <ul>{missionsContent()}</ul>
       </div>
       <div className="rockets">
         <h2>My Rockets</h2>
