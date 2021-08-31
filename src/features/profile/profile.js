@@ -10,6 +10,15 @@ const Profile = () => {
     return missionsJoined.map((mission) => <li key={mission.missionId}>{mission.name}</li>);
   };
 
+  const rockets = useSelector((state) => state.rockets.list);
+  const rocketsBooked = rockets.filter((el) => el.booking === true);
+  const rocketsContent = () => {
+    if (rocketsBooked.length === 0) {
+      return <li>Reserve a Rocket</li>;
+    }
+    return rocketsBooked.map((el) => <li key={el.id}>{el.name}</li>);
+  };
+
   return (
     <section className="profile">
       <div className="missions">
@@ -18,7 +27,7 @@ const Profile = () => {
       </div>
       <div className="rockets">
         <h2>My Rockets</h2>
-        <ul>{/* {createRockets()} */}</ul>
+        <ul>{rocketsContent()}</ul>
       </div>
     </section>
   );
