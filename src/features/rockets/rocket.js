@@ -1,20 +1,27 @@
-import rocketImg from './rocket.png';
+import PropTypes from 'prop-types';
 
-const Rocket = () => (
-  <div className="card">
+const Rocket = ({
+  id, name, description, image,
+}) => (
+  <div className="card" key={id}>
     <div className="cardImg">
-      <img src={rocketImg} alt="rocket" height="160" width="160" />
+      <img src={image} alt="rocket" height="160" width="160" />
     </div>
     <div className="cardInfo">
-      <h2>Rocket name</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.Nobis sequi architecto
-        asperiores repellendus autem ea enim sint est nostrum hic! Voluptatum earum
-        quis laboriosam non, numquam aspernatur libero commodi accusamus?
-      </p>
-      <button className="rocketBtn" type="button">Reserve Rocket</button>
+      <h2>{name}</h2>
+      <p>{description}</p>
+      <button className="rocketBtn" type="button">
+        Reserve Rocket
+      </button>
     </div>
   </div>
 );
+
+Rocket.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+};
 
 export default Rocket;
