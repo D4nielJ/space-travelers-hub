@@ -14,29 +14,28 @@ const Missions = () => {
   }, []);
 
   const handleUpdateMissionBtn = (e) => {
-    const id = e.target.parentNode.parentNode.id;
+    const { id } = e.target.parentNode.parentNode;
     dispatch(updateMissions(id));
   };
 
-  const createMissions = () =>
-    missions.map((mission) => (
-      <tr id={mission.missionId} key={mission.missionId}>
-        <th>{mission.name}</th>
-        <th>{mission.description}</th>
-        <th>{mission.status ? 'Active member' : 'Not a member'}</th>
-        <th>
-          {mission.status ? (
-            <button onClick={handleUpdateMissionBtn} type="button">
-              Leave mission
-            </button>
-          ) : (
-            <button onClick={handleUpdateMissionBtn} type="button">
-              Join mission
-            </button>
-          )}
-        </th>
-      </tr>
-    ));
+  const createMissions = () => missions.map((mission) => (
+    <tr id={mission.missionId} key={mission.missionId}>
+      <th>{mission.name}</th>
+      <th>{mission.description}</th>
+      <th>{mission.status ? 'Active member' : 'Not a member'}</th>
+      <th>
+        {mission.status ? (
+          <button onClick={handleUpdateMissionBtn} type="button">
+            Leave mission
+          </button>
+        ) : (
+          <button onClick={handleUpdateMissionBtn} type="button">
+            Join mission
+          </button>
+        )}
+      </th>
+    </tr>
+  ));
 
   return (
     <table>

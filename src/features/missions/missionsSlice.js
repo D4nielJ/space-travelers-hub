@@ -38,7 +38,6 @@ export const missionsSlice = createSlice({
         state.error = 'Error fetching missions data';
       })
       .addCase(updateMissions, (state, action) => {
-        console.log('hello');
         state.missions.forEach((mission) => {
           if (mission.missionId === action.payload) {
             mission.status = !mission.status;
