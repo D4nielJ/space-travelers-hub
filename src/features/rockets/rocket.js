@@ -12,25 +12,34 @@ const Rocket = ({
   };
 
   return (
-    <div className="card" key={id}>
-      <div className="cardImg">
-        <img src={image} alt="rocket" height="160" width="160" />
+    <div className="flex mb-6" key={id}>
+      <div className="mr-4 flex-none w-48 relative">
+        <img className="absolute inset-0 w-full h-full object-cover" src={image} alt="rocket" />
       </div>
       <div className="cardInfo">
-        <h2>{name}</h2>
-        <p>
-          {booking === true ? <span style={{ border: '1px solid red' }}>Reserved</span> : ''}
+        <h2 className="text-lg font-medium mb-2">{name}</h2>
+        <p className="mb-4">
+          {booking === true ? (
+            <span className="bg-green-400 rounded-md px-2 py-0.5 mr-2 text-white font-semibold tracking-wide text-sm">
+              Reserved
+            </span>
+          ) : (
+            ''
+          )}
           {description}
         </p>
         {booking === false ? (
-          <button onClick={updateHandler} className="rocketBtn" type="button">
+          <button
+            onClick={updateHandler}
+            className="bg-blue-600 text-white w-48 border border-transparent py-2 px-4 rounded-md"
+            type="button"
+          >
             Reserve Rocket
           </button>
         ) : (
           <button
             onClick={updateHandler}
-            style={{ color: 'red' }}
-            className="rocketBtn"
+            className="bg-white text-gray-600 border-gray-600 border w-48 py-2 px-4 rounded-md"
             type="button"
           >
             Cancel Reservation
