@@ -23,43 +23,42 @@ const Missions = () => {
     dispatch(updateMissions(id));
   };
 
-  const createMissions = () =>
-    missions.map((mission) => (
-      <tr id={mission.missionId} key={mission.missionId} className="mission-row">
-        <th className={`${styles.thTitle} w-40`}>{mission.name}</th>
-        <th className={`${styles.th}`}>{mission.description}</th>
-        <th className={`${styles.th} w-40 text-center`}>
-          {mission.status ? (
-            <div className="bg-green-400 rounded-md px-2 py-0.5 mr-2 text-white font-semibold tracking-wide text-sm">
-              Active member
-            </div>
-          ) : (
-            <div className="bg-gray-600 rounded-md px-2 py-0.5 mr-2 text-white font-semibold tracking-wide text-sm">
-              Not a member
-            </div>
-          )}
-        </th>
-        <th className={`${styles.th} w-40 text-center`}>
-          {mission.status ? (
-            <button
-              className="text-red-600 border-red-600 border py-2 px-4 rounded-md"
-              onClick={handleUpdateMissionBtn}
-              type="button"
-            >
-              Leave mission
-            </button>
-          ) : (
-            <button
-              className="text-gray-600 border-gray-600 border py-2 px-4 rounded-md"
-              onClick={handleUpdateMissionBtn}
-              type="button"
-            >
-              Join mission
-            </button>
-          )}
-        </th>
-      </tr>
-    ));
+  const createMissions = () => missions.map((mission) => (
+    <tr id={mission.missionId} key={mission.missionId} className="mission-row">
+      <th className={`${styles.thTitle} w-40`}>{mission.name}</th>
+      <th className={`${styles.th}`}>{mission.description}</th>
+      <th className={`${styles.th} w-40 text-center`}>
+        {mission.status ? (
+          <div className="bg-green-400 rounded-md px-2 py-0.5 mr-2 text-white font-semibold tracking-wide text-sm">
+            Active member
+          </div>
+        ) : (
+          <div className="bg-gray-600 rounded-md px-2 py-0.5 mr-2 text-white font-semibold tracking-wide text-sm">
+            Not a member
+          </div>
+        )}
+      </th>
+      <th className={`${styles.th} w-40 text-center`}>
+        {mission.status ? (
+          <button
+            className="text-red-600 border-red-600 border py-2 px-4 rounded-md"
+            onClick={handleUpdateMissionBtn}
+            type="button"
+          >
+            Leave mission
+          </button>
+        ) : (
+          <button
+            className="text-gray-600 border-gray-600 border py-2 px-4 rounded-md"
+            onClick={handleUpdateMissionBtn}
+            type="button"
+          >
+            Join mission
+          </button>
+        )}
+      </th>
+    </tr>
+  ));
 
   return (
     <table className="border border-gray-400 text-left mb-16">
@@ -68,7 +67,7 @@ const Missions = () => {
           <th className={styles.thTitle}>Mission</th>
           <th className={styles.thTitle}>Description</th>
           <th className={styles.thTitle}>Status</th>
-          <th className={styles.th} />
+          <th className={styles.th}>&nbsp;</th>
         </tr>
       </thead>
       <tbody>{createMissions()}</tbody>
