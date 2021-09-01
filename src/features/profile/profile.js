@@ -5,29 +5,37 @@ const Profile = () => {
   const missionsJoined = missions.filter((mission) => mission.status === true);
   const missionsContent = () => {
     if (missionsJoined.length === 0) {
-      return <li>Join missions to start</li>;
+      return <li className="p-6 font-medium">Join missions to start</li>;
     }
-    return missionsJoined.map((mission) => <li key={mission.missionId}>{mission.name}</li>);
+    return missionsJoined.map((mission) => (
+      <li className="p-6 font-medium border-b-2" key={mission.missionId}>
+        {mission.name}
+      </li>
+    ));
   };
 
   const rockets = useSelector((state) => state.rockets.list);
   const rocketsBooked = rockets.filter((el) => el.booking === true);
   const rocketsContent = () => {
     if (rocketsBooked.length === 0) {
-      return <li>Reserve a Rocket</li>;
+      return <li className="p-6 font-medium">Reserve a Rocket</li>;
     }
-    return rocketsBooked.map((el) => <li key={el.id}>{el.name}</li>);
+    return rocketsBooked.map((el) => (
+      <li className="p-6 font-medium border-b-2" key={el.id}>
+        {el.name}
+      </li>
+    ));
   };
 
   return (
-    <section className="profile">
-      <div className="missions">
-        <h2>My Missions</h2>
-        <ul>{missionsContent()}</ul>
+    <section className="flex justify-around">
+      <div className="w-1/2">
+        <h2 className="font-semibold text-xl mb-4">My Missions</h2>
+        <ul className="border rounded">{missionsContent()}</ul>
       </div>
-      <div className="rockets">
-        <h2>My Rockets</h2>
-        <ul>{rocketsContent()}</ul>
+      <div className="w-1/2 ml-8">
+        <h2 className="font-semibold text-xl mb-4">My Rockets</h2>
+        <ul className="border rounded">{rocketsContent()}</ul>
       </div>
     </section>
   );
