@@ -21,25 +21,25 @@ const NavBar = () => {
   ];
 
   const createLinks = () => links.map((link) => (
-    <li key={link.key}>
-      <NavLink to={link.path} exact>
+    <li className="ml-4 text-blue-600 hover:underline" key={link.key}>
+      <NavLink activeClassName="underline" to={link.path} exact>
         {link.text}
       </NavLink>
     </li>
   ));
 
   return (
-    <nav className="navBar">
-      <div className="leftContainer">
-        <div className="imgContainer">
+    <nav className="navBar flex justify-between py-4 border-b-2 mb-8">
+      <div className="leftContainer flex items-center">
+        <div className="imgContainer mr-4">
           <img src={logo} alt="logo" width="50" height="50" />
         </div>
         <div className="titleContainer">
-          <h1>Space Traveler&apos;s Hub</h1>
+          <h1 className="text-2xl font-bold">Space Traveler&apos;s Hub</h1>
         </div>
       </div>
-      <div className="rightContainer">
-        <ul className="links">{createLinks()}</ul>
+      <div className="rightContainer flex items-center">
+        <ul className="links my-auto flex">{createLinks()}</ul>
       </div>
     </nav>
   );

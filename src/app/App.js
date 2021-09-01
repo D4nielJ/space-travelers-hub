@@ -6,7 +6,7 @@ import Rockets from '../features/rockets/rockets';
 
 const App = () => (
   <Router basename={process.env.PUBLIC_URL}>
-    <div className="App">
+    <div className="App container mx-auto px-16 sm:px-30">
       <NavBar />
       <Switch>
         <Route path="/profile">
