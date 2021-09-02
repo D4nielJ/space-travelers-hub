@@ -2,4 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mission-row:nth-child(odd) {
+  @apply bg-gray-50;
+}
 /* stylelint-enable */
