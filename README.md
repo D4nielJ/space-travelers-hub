@@ -9,6 +9,8 @@ Bootstraped with React and Redux.
 ## Live demo
 [Live Demo Here](https://sad-boyd-baee9e.netlify.app/)
 
+[Watch The Live Demo With Us](https://drive.google.com/file/d/1bihtJld2RTKmR7n2E0O96WefMuAzfGz1/view?usp=sharing)
+
 ## Preview
 
 ![](./screenshot.png)
