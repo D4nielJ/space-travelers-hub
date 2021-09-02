@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests snapshots of components renders correctly 1`] = `
+<div
+  className="rocketsContainer"
+/>
+`;
+
+exports[`Tests snapshots of components renders correctly 2`] = `
+<table
+  className="border border-gray-400 text-left mb-16"
+>
+  <thead
+    className="bg-gray-300"
+  >
+    <tr>
+      <th
+        className="border border-gray-400 py-2 px-2 text-lg text-bold"
+      >
+        Mission
+      </th>
+      <th
+        className="border border-gray-400 py-2 px-2 text-lg text-bold"
+      >
+        Description
+      </th>
+      <th
+        className="border border-gray-400 py-2 px-2 text-lg text-bold"
+      >
+        Status
+      </th>
+      <th
+        className="border border-gray-400 py-2 px-2"
+      >
+         
+      </th>
+    </tr>
+  </thead>
+  <tbody />
+</table>
+`;
+
+exports[`Tests snapshots of components renders correctly 3`] = `
+<section
+  className="flex justify-around"
+>
+  <div
+    className="w-1/2"
+  >
+    <h2
+      className="font-semibold text-xl mb-4"
+    >
+      My Missions
+    </h2>
+    <ul
+      className="border rounded"
+    >
+      <li
+        className="p-6 font-medium"
+      >
+        Join missions to start
+      </li>
+    </ul>
+  </div>
+  <div
+    className="w-1/2 ml-8"
+  >
+    <h2
+      className="font-semibold text-xl mb-4"
+    >
+      My Rockets
+    </h2>
+    <ul
+      className="border rounded"
+    >
+      <li
+        className="p-6 font-medium"
+      >
+        Reserve a Rocket
+      </li>
+    </ul>
+  </div>
+</section>
+`;
